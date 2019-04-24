@@ -1,0 +1,39 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu>  <!--This defines what is in menu-->
+
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list>
+          <!--Go through and learn how this all works.
+            Why is this all defined inside toggle and why is other stuff
+            defined inside item???
+            1) You should see appPages and know that is user created;
+            it is list that is looped over.
+            2) *ngFor is a directive used to iterate. Can be used with HTML
+            element or component element.
+          -->
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+              <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+                <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                <ion-label>
+                  {{p.title}}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+
+    </ion-menu>
+    <!--Important to have main keyword here. I am not completely sure why.
+      I think it is because creating menu makes different views and you have
+      to specify that we want the main one. 
+    -->
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
